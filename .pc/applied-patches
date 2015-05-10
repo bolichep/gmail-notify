@@ -9,3 +9,4 @@
 09_gtkStatusIcon.patch
 10_add_sound_fix_connect.patch
 11_add_conn_err_icon
+12_theme_icons

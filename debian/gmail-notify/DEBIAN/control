@@ -2,7 +2,7 @@ Package: gmail-notify
 Version: 1.6.1.1-4
 Architecture: all
 Maintainer: Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>
-Installed-Size: 145
+Installed-Size: 146
 Depends: python:any (>= 2.6.6-7~), python-gtk2
 Recommends: www-browser
 Section: mail
