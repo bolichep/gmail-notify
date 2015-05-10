@@ -20,6 +20,7 @@ import re
 BKG_PATH="/usr/share/apps/gmail-notify/background.jpg"
 ICON_PATH="/usr/share/apps/gmail-notify/icon.png"
 ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
+ICON3_PATH="/usr/share/apps/gmail-notify/icon3.png"
 
 def help_cb(n,action):
 	print "Nothing to help"
@@ -184,6 +185,9 @@ class GmailNotify:
 			self.label.set_markup(self.default_label)
 			self.show_popup()
 			self.dont_connect=0
+			self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON3_PATH )
+			scaled_buf = self.pixbuf.scale_simple(24,24,gtk.gdk.INTERP_BILINEAR)
+			self.tray.set_from_pixbuf(scaled_buf)
 			return 0
 
 	def mail_check(self, event=None):
@@ -312,16 +316,6 @@ class GmailNotify:
 		self.popup=0
 		print "destroying popup"
 		return
-#	def Xdestroy_popup(self):
-#		print "destroying popup"
-#		if self.popuptimer>0:gtk.timeout_remove(self.popuptimer)
-#		if self.waittimer>0: gtk.timeout_remove(self.waittimer)
-#		self.senddown=0
-#		self.hassettimer=0
-#		self.window.hide()
-#		self.window.resize(180,1)
-#		self.window.move(gtk.gdk.screen_width() - self.width, gtk.gdk.screen_height() - self.height)
-#		return
 
 	def popup_proc(self):
 		# Set popup status flag
