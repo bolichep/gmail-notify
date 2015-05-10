@@ -1,7 +1,7 @@
 450052d83efd1fd0145ff5a58d231a3b  usr/lib/gmail-notify/GmailConfig.py
 0cf63f5a10f76d297bc3ba4379c0948f  usr/lib/gmail-notify/GmailPopupMenu.py
 a6acd1399e72ad686e0ab9341a969c35  usr/lib/gmail-notify/gmailatom.py
-148154c93c4ab8ee7144eee76decee85  usr/lib/gmail-notify/notifier.py
+bd66ca059bfec2a3d07db49d9df2936d  usr/lib/gmail-notify/notifier.py
 4daea63ce3909743dd3e783080d2b0b7  usr/lib/gmail-notify/xmllangs.py
 349599e65b2b784105cd16a4df22f18b  usr/share/applications/gmail-notify.desktop
 7329e7b65ef6dda3050df374b1ab8426  usr/share/apps/gmail-notify/background.jpg
@@ -11,9 +11,10 @@ a6acd1399e72ad686e0ab9341a969c35  usr/lib/gmail-notify/gmailatom.py
 efc3eb20ca74d17fcbd27f63e3a33eef  usr/share/apps/gmail-notify/icon.xpm
 02ffe638ec57082860fb204d81c7ed96  usr/share/apps/gmail-notify/icon2.jpg
 26d8fcb11a284f397a786a69fd30471f  usr/share/apps/gmail-notify/icon2.png
+3aa8ac63749f4a1fb8fc17692cb9daf1  usr/share/apps/gmail-notify/icon3.png
 14702472e810d6fdbda601d8713ab145  usr/share/apps/gmail-notify/langs.xml
 1448aad933818c24a3e94396121556d9  usr/share/doc/gmail-notify/README.gz
-ca8251d46e2ac698efcbdf2638384bf4  usr/share/doc/gmail-notify/changelog.Debian.gz
+00ceef771cf63ae7946179c038f7e606  usr/share/doc/gmail-notify/changelog.Debian.gz
 e923d9e5b34a0367e862fd2175358da9  usr/share/doc/gmail-notify/copyright
 fb3bd2d4f0aecf71b3df68bd2db0fdc4  usr/share/doc/gmail-notify/notifier.conf.sample
 c3c04b853b90d1ecb9c6315cfda89f17  usr/share/man/man1/gmail-notify.1.gz
