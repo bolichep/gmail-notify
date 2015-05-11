@@ -1,7 +1,7 @@
 450052d83efd1fd0145ff5a58d231a3b  usr/lib/gmail-notify/GmailConfig.py
 0cf63f5a10f76d297bc3ba4379c0948f  usr/lib/gmail-notify/GmailPopupMenu.py
 a6acd1399e72ad686e0ab9341a969c35  usr/lib/gmail-notify/gmailatom.py
-aa5e07938954478682fe4a0c1c7a4d94  usr/lib/gmail-notify/notifier.py
+42c96a74e8c52f786eb3d629b0087484  usr/lib/gmail-notify/notifier.py
 4daea63ce3909743dd3e783080d2b0b7  usr/lib/gmail-notify/xmllangs.py
 349599e65b2b784105cd16a4df22f18b  usr/share/applications/gmail-notify.desktop
 7329e7b65ef6dda3050df374b1ab8426  usr/share/apps/gmail-notify/background.jpg

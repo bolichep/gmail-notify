@@ -157,12 +157,12 @@ class GmailNotify:
 
 		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
 	
-	def set_tray_state(self,state=1,size=24):
-		if state==0:
+	def set_tray_state(self,state='none',size=24):
+		if state=='zero':
 			icon_state = "mail-mark-read"
-		if state==1 or state==2:
+		if state=='none' or state=='new':
 			icon_state = "mail-mark-unread"
-		if state==3:
+		if state=='error':
 			icon_state = "mail-mark-important"
 		icon_theme = gtk.icon_theme_get_default()
 		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
@@ -204,7 +204,7 @@ class GmailNotify:
 			self.label.set_markup(self.default_label)
 			self.show_popup()
 			self.dont_connect=0
-			self.set_tray_state(3)
+			self.set_tray_state('error')
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON3_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-important", 24, gtk.ICON_LOOKUP_FORCE_SVG)			
 			#~ scaled_buf = self.pixbuf.scale_simple(24,24,gtk.gdk.INTERP_BILINEAR)
@@ -260,7 +260,7 @@ class GmailNotify:
 			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON2_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-unread", 24, gtk.ICON_LOOKUP_FORCE_SVG)
-			tray_state = 2
+			tray_state = 'new'
 		else:
 			print "no new messages"
 			#self.default_title="<span size='large' ><i><u>"+self.lang.get_string(21)+"</u></i></span>\n\n\n"
@@ -269,7 +269,7 @@ class GmailNotify:
 			self.tray.set_tooltip_text(self.lang.get_string(18))
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )			
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-read", 24, gtk.ICON_LOOKUP_FORCE_SVG)
-			tray_state = 1
+			tray_state = 'none'
 
 		
 		p = re.compile('&')
@@ -292,7 +292,8 @@ class GmailNotify:
 		except:
 			# If an error ocurred, cancel mail check
 			print "getUnreadMsgCount() failed, will try again soon"
-			self.set_tray_state(3)
+			self.tray.set_tooltip_text(self.lang.get_string(25)) # 25: Mailcheck failed, will retry
+			self.set_tray_state('error')
 			return (-1,)
 
 		sender=''
@@ -330,7 +331,7 @@ class GmailNotify:
 		print "generating popup"
 		self.noti = pynotify.Notification(self.default_title,re.sub('&','&amp;', self.default_label))
 		#~ self.noti.set_icon_from_pixbuf(self.pixbuf)
-		self.noti.set_icon_from_pixbuf(self.set_tray_state(2,48))
+		self.noti.set_icon_from_pixbuf(self.set_tray_state('new',48))
 		self.noti.set_category("presence.online")
 		self.noti.add_action("default","Default Action", self.gotourlnotify )
 		#self.noti.add_action("help","Help", help_cb )
