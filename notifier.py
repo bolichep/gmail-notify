@@ -168,7 +168,7 @@ class GmailNotify:
 		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
 		scaled_buf = pixbuf.scale_simple(size,size,gtk.gdk.INTERP_BILINEAR)
 		self.tray.set_from_pixbuf(scaled_buf)
-		if state==2:
+		if state=='new':
 			self.tray.set_blinking(True)
 		else:
 			self.tray.set_blinking(False)	
