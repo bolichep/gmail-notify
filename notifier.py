@@ -73,7 +73,7 @@ class GmailNotify:
 		print "selected language: "+self.lang.get_name()
 		# Creates the main window
 		self.window = gtk.Window(gtk.WINDOW_POPUP)
-		self.window.set_title(self.lang.get_string(21))
+		self.window.set_title(self.lang.get_string(21)) # 21 = Gmail Notifier
 		self.window.set_resizable(1)
 		self.window.set_decorated(0)
 		self.window.set_keep_above(1)
@@ -114,8 +114,8 @@ class GmailNotify:
 		self.label=gtk.Label()
 		self.label.set_line_wrap(1)
 		self.label.set_size_request(170,140)
-		self.default_title =self.lang.get_string(21)
-		self.default_label =self.lang.get_string(20)
+		self.default_title =self.lang.get_string(21) # 21 = Gmail Notifier
+		self.default_label =self.lang.get_string(20) # 20 = Password:
 
 		self.label.set_markup( self.default_label)
 		# Show popup
@@ -141,11 +141,11 @@ class GmailNotify:
 
 		# Create the tray icon object
 		self.tray = gtk.StatusIcon()
-		self.tray.set_title(self.lang.get_string(21))
+		self.tray.set_title(self.lang.get_string(21)) # 21 = Gmail Notifier
 		self.tray.connect("button_press_event",self.tray_icon_clicked)
 		# Set the image for the tray icon
 		#self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )
-		self.set_tray_state()
+		#self.set_tray_state()
 
 		self.init=1
 		while gtk.events_pending():
@@ -186,7 +186,7 @@ class GmailNotify:
 			return 0
 		self.dont_connect=1
 		print "connecting..."
-		self.tray.set_tooltip(self.lang.get_string(13))
+		self.tray.set_tooltip(self.lang.get_string(13))  # 13 = Connecting...
 		while gtk.events_pending():
 			gtk.main_iteration( gtk.TRUE)
 		# Attemp connection
@@ -194,13 +194,13 @@ class GmailNotify:
 			self.connection=gmailatom.GmailAtom(self.options['gmailusername'],self.options['gmailpassword'],self.options['proxy'])
 			self.connection.refreshInfo()
 			print "connection successful... continuing"
-			self.tray.set_tooltip_text(self.lang.get_string(14))
+			self.tray.set_tooltip_text(self.lang.get_string(14)) # 14 = Connected
 			self.dont_connect=0
 			return 1
 		except:
 			print "login failed, will retry"
-			self.tray.set_tooltip_text(self.lang.get_string(15))
-			self.default_label = "<span size='large' ><u><i>"+self.lang.get_string(15)+"</i></u></span>\n\n"+self.lang.get_string(16)
+			self.tray.set_tooltip_text(self.lang.get_string(15)) # 15 = Connection failed
+			self.default_label = "<span size='large' ><u><i>"+self.lang.get_string(15)+"</i></u></span>\n\n"+self.lang.get_string(16) # 16 = Connection to your Gmail inbox failed, will retry
 			self.label.set_markup(self.default_label)
 			self.show_popup()
 			self.dont_connect=0
@@ -243,10 +243,10 @@ class GmailNotify:
 			snippet= attrs[4]
 			if len(snippet)>0:
 				#self.default_title="<span size='large' ><u><i>"+self.lang.get_string(17)+sender[0:24]+"</i></u></span>\n"
-				self.default_title=self.lang.get_string(17)+sender[0:24]
+				self.default_title=self.lang.get_string(17)+sender[0:24]  # 17 = New mail from 
 				self.default_label=shortenstring(subject,20)+"\n\n"+snippet+"..."
 			else:
-				self.default_title=self.lang.get_string(17)+sender[0:24]
+				self.default_title=self.lang.get_string(17)+sender[0:24]  # 17 = New mail from 
 				self.default_label=shortenstring(subject,20)+"\n\n"+snippet+"..."
 
 			self.show_popup()
@@ -256,16 +256,16 @@ class GmailNotify:
 				os.system("pacmd play-file /usr/share/sounds/sonido-huayra/stereo/suspend-error.oga 0 2>&1 >/dev/null &")
 			print str(attrs[0])+" unread messages"
 			s = ' ' 
-			if attrs[0]>1: s=self.lang.get_string(35)+" "
-			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})
+			if attrs[0]>1: s=self.lang.get_string(35)+" "  # 35 = s
+			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})  # 19 = %(u)d unread message%(s)s
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON2_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-unread", 24, gtk.ICON_LOOKUP_FORCE_SVG)
 			tray_state = 'new'
 		else:
 			print "no new messages"
 			#self.default_title="<span size='large' ><i><u>"+self.lang.get_string(21)+"</u></i></span>\n\n\n"
-			self.default_title=self.lang.get_string(21)
-			self.default_label=self.lang.get_string(18)
+			self.default_title=self.lang.get_string(21)  # 21 = Gmail Notifier
+			self.default_label=self.lang.get_string(18)  # 18 = No unread mail
 			self.tray.set_tooltip_text(self.lang.get_string(18))
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )			
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-read", 24, gtk.ICON_LOOKUP_FORCE_SVG)
@@ -402,7 +402,7 @@ class GmailNotify:
 			self.gotourl()
 
 	def exit(self, event):
-		dialog = gtk.MessageDialog( None, gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO, self.lang.get_string(5))
+		dialog = gtk.MessageDialog( None, gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO, self.lang.get_string(5))  # 5 = Are you sure do you want to leave Gmail Notifier?
 		dialog.width, dialog.height = dialog.get_size()
 		dialog.move( gtk.gdk.screen_width()/2-dialog.width/2, gtk.gdk.screen_height()/2-dialog.height/2)
 		ret = dialog.run()
