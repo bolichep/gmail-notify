@@ -26,6 +26,7 @@ STATE_NEW  = 'new'
 STATE_ZERO = 'zero'
 STATE_NONE = 'none'
 STATE_ERROR  = 'error'
+STATE_OK = 'ok'
 
 def help_cb(n,action):
 	print "Nothing to help"
@@ -150,7 +151,7 @@ class GmailNotify:
 		self.tray.connect("button_press_event",self.tray_icon_clicked)
 		# Set the image for the tray icon
 		#self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )
-		self.set_tray_state()
+		self.set_tray_state(STATE_ZERO)
 
 		self.init=1
 		while gtk.events_pending():
@@ -163,9 +164,14 @@ class GmailNotify:
 		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
 
 	def set_tray_state(self,state=STATE_NONE,size=24):
+		global current
+		global icon_state 
 		if state==STATE_ZERO:
 			icon_state = "mail-mark-read"
-		if state==STATE_NONE or state==STATE_NEW:
+			current=STATE_NONE
+		if state==STATE_NONE:
+			state=current	
+		if state==STATE_OK or state==STATE_NEW:
 			icon_state = "mail-mark-unread"
 		if state==STATE_ERROR:
 			icon_state = "mail-mark-important"
@@ -173,10 +179,11 @@ class GmailNotify:
 		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
 		scaled_buf = pixbuf.scale_simple(size,size,gtk.gdk.INTERP_BILINEAR)
 		self.tray.set_from_pixbuf(scaled_buf)
-		if state=='new':
+		if state==STATE_NEW:
 			self.tray.set_blinking(True)
 		else:
 			self.tray.set_blinking(False)	
+		current = state	
 		return scaled_buf # pixbuf
 			
 			
@@ -200,6 +207,7 @@ class GmailNotify:
 			self.connection.refreshInfo()
 			print "connection successful... continuing"
 			self.tray.set_tooltip_text(self.lang.get_string(14)) # 14 = Connected
+			self.set_tray_state(STATE_OK)
 			self.dont_connect=0
 			return 1
 		except:
@@ -209,7 +217,7 @@ class GmailNotify:
 			self.label.set_markup(self.default_label)
 			self.show_popup()
 			self.dont_connect=0
-			self.set_tray_state('error')
+			self.set_tray_state(STATE_ERROR)
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON3_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-important", 24, gtk.ICON_LOOKUP_FORCE_SVG)			
 			#~ scaled_buf = self.pixbuf.scale_simple(24,24,gtk.gdk.INTERP_BILINEAR)
@@ -265,7 +273,7 @@ class GmailNotify:
 			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})  # 19 = %(u)d unread message%(s)s
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON2_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-unread", 24, gtk.ICON_LOOKUP_FORCE_SVG)
-			tray_state = 'new'
+			tray_state = STATE_NEW
 		else:
 			print "no new messages"
 			#self.default_title="<span size='large' ><i><u>"+self.lang.get_string(21)+"</u></i></span>\n\n\n"
@@ -274,7 +282,7 @@ class GmailNotify:
 			self.tray.set_tooltip_text(self.lang.get_string(18))
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )			
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-read", 24, gtk.ICON_LOOKUP_FORCE_SVG)
-			tray_state = 'none'
+			tray_state = STATE_OK
 
 		
 		p = re.compile('&')
@@ -298,6 +306,7 @@ class GmailNotify:
 			# If an error ocurred, cancel mail check
 			print "getUnreadMsgCount() failed, will try again soon"
 			self.tray.set_tooltip_text(self.lang.get_string(25)) # 25: Mailcheck failed, will retry
+			self.default_label = self.lang.get_string(25)			
 			self.set_tray_state('error')
 			return (-1,)
 
