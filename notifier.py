@@ -22,6 +22,11 @@ ICON_PATH="/usr/share/apps/gmail-notify/icon.svg"
 ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
 ICON3_PATH="/usr/share/apps/gmail-notify/icon3.png"
 
+STATE_NEW  = 'new'
+STATE_ZERO = 'zero'
+STATE_NONE = 'none'
+STATE_ERROR  = 'error'
+
 def help_cb(n,action):
 	print "Nothing to help"
 	return
@@ -156,13 +161,13 @@ class GmailNotify:
 			self.mail_check()
 
 		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
-	
-	def set_tray_state(self,state='none',size=24):
-		if state=='zero':
+
+	def set_tray_state(self,state=STATE_NONE,size=24):
+		if state==STATE_ZERO:
 			icon_state = "mail-mark-read"
-		if state=='none' or state=='new':
+		if state==STATE_NONE or state==STATE_NEW:
 			icon_state = "mail-mark-unread"
-		if state=='error':
+		if state==STATE_ERROR:
 			icon_state = "mail-mark-important"
 		icon_theme = gtk.icon_theme_get_default()
 		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
