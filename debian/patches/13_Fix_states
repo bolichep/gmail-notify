@@ -18,9 +18,9 @@ Forwarded: <no|not-needed|url proving that it has been forwarded>
 Reviewed-By: <name and email of someone who approved the patch>
 Last-Update: <YYYY-MM-DD>
 
---- gmail-notify-1.6.1.1.orig/notifier.py
-+++ gmail-notify-1.6.1.1/notifier.py
-@@ -157,12 +157,12 @@ class GmailNotify:
+--- a/notifier.py
++++ b/notifier.py
+@@ -157,12 +157,12 @@
  
  		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
  	
@@ -37,7 +37,7 @@ Last-Update: <YYYY-MM-DD>
  			icon_state = "mail-mark-important"
  		icon_theme = gtk.icon_theme_get_default()
  		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
-@@ -204,7 +204,7 @@ class GmailNotify:
+@@ -204,7 +204,7 @@
  			self.label.set_markup(self.default_label)
  			self.show_popup()
  			self.dont_connect=0
@@ -46,7 +46,7 @@ Last-Update: <YYYY-MM-DD>
  			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON3_PATH )
  			#~ self.pixbuf = icon_theme.load_icon("mail-mark-important", 24, gtk.ICON_LOOKUP_FORCE_SVG)			
  			#~ scaled_buf = self.pixbuf.scale_simple(24,24,gtk.gdk.INTERP_BILINEAR)
-@@ -260,7 +260,7 @@ class GmailNotify:
+@@ -260,7 +260,7 @@
  			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})
  			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON2_PATH )
  			#~ self.pixbuf = icon_theme.load_icon("mail-mark-unread", 24, gtk.ICON_LOOKUP_FORCE_SVG)
@@ -55,7 +55,7 @@ Last-Update: <YYYY-MM-DD>
  		else:
  			print "no new messages"
  			#self.default_title="<span size='large' ><i><u>"+self.lang.get_string(21)+"</u></i></span>\n\n\n"
-@@ -269,7 +269,7 @@ class GmailNotify:
+@@ -269,7 +269,7 @@
  			self.tray.set_tooltip_text(self.lang.get_string(18))
  			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )			
  			#~ self.pixbuf = icon_theme.load_icon("mail-mark-read", 24, gtk.ICON_LOOKUP_FORCE_SVG)
@@ -64,7 +64,7 @@ Last-Update: <YYYY-MM-DD>
  
  		
  		p = re.compile('&')
-@@ -292,7 +292,8 @@ class GmailNotify:
+@@ -292,7 +292,8 @@
  		except:
  			# If an error ocurred, cancel mail check
  			print "getUnreadMsgCount() failed, will try again soon"
@@ -74,7 +74,7 @@ Last-Update: <YYYY-MM-DD>
  			return (-1,)
  
  		sender=''
-@@ -330,7 +331,7 @@ class GmailNotify:
+@@ -330,7 +331,7 @@
  		print "generating popup"
  		self.noti = pynotify.Notification(self.default_title,re.sub('&','&amp;', self.default_label))
  		#~ self.noti.set_icon_from_pixbuf(self.pixbuf)

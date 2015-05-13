@@ -18,9 +18,9 @@ Forwarded: <no|not-needed|url proving that it has been forwarded>
 Reviewed-By: <name and email of someone who approved the patch>
 Last-Update: <YYYY-MM-DD>
 
---- gmail-notify-1.6.1.1.orig/notifier.py
-+++ gmail-notify-1.6.1.1/notifier.py
-@@ -168,7 +168,7 @@ class GmailNotify:
+--- a/notifier.py
++++ b/notifier.py
+@@ -168,7 +168,7 @@
  		pixbuf = icon_theme.load_icon( icon_state , size, gtk.ICON_LOOKUP_FORCE_SVG)
  		scaled_buf = pixbuf.scale_simple(size,size,gtk.gdk.INTERP_BILINEAR)
  		self.tray.set_from_pixbuf(scaled_buf)

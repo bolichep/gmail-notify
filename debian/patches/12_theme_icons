@@ -19,9 +19,9 @@ Forwarded: <no|not-needed|url proving that it has been forwarded>
 Reviewed-By: <name and email of someone who approved the patch>
 Last-Update: <YYYY-MM-DD>
 
---- gmail-notify-1.6.1.1.orig/notifier.py
-+++ gmail-notify-1.6.1.1/notifier.py
-@@ -18,7 +18,7 @@ import gmailatom
+--- a/notifier.py
++++ b/notifier.py
+@@ -18,7 +18,7 @@
  import re
  
  BKG_PATH="/usr/share/apps/gmail-notify/background.jpg"
@@ -30,7 +30,7 @@ Last-Update: <YYYY-MM-DD>
  ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
  ICON3_PATH="/usr/share/apps/gmail-notify/icon3.png"
  
-@@ -101,15 +101,15 @@ class GmailNotify:
+@@ -101,15 +101,15 @@
  		# Create the notify
  		#noti = pynotify.Notification("")
  
@@ -55,7 +55,7 @@ Last-Update: <YYYY-MM-DD>
  		# Set popup's label
  		self.label=gtk.Label()
  		self.label.set_line_wrap(1)
-@@ -120,32 +120,32 @@ class GmailNotify:
+@@ -120,32 +120,32 @@
  		self.label.set_markup( self.default_label)
  		# Show popup
  		self.label.show()
@@ -109,7 +109,7 @@ Last-Update: <YYYY-MM-DD>
  
  		self.init=1
  		while gtk.events_pending():
-@@ -156,7 +156,26 @@ class GmailNotify:
+@@ -156,7 +156,26 @@
  			self.mail_check()
  
  		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
@@ -137,7 +137,7 @@ Last-Update: <YYYY-MM-DD>
  	def sound_handle(self,menuitem):
  		return
  
-@@ -185,9 +204,11 @@ class GmailNotify:
+@@ -185,9 +204,11 @@
  			self.label.set_markup(self.default_label)
  			self.show_popup()
  			self.dont_connect=0
@@ -152,7 +152,7 @@ Last-Update: <YYYY-MM-DD>
  			return 0
  
  	def mail_check(self, event=None):
-@@ -237,20 +258,25 @@ class GmailNotify:
+@@ -237,20 +258,25 @@
  			s = ' ' 
  			if attrs[0]>1: s=self.lang.get_string(35)+" "
  			self.tray.set_tooltip_text((self.lang.get_string(19))%{'u':attrs[0],'s':s})
@@ -182,7 +182,7 @@ Last-Update: <YYYY-MM-DD>
  		self.unreadmsgcount=attrs[0]
  
  		self.mailcheck=0
-@@ -266,6 +292,7 @@ class GmailNotify:
+@@ -266,6 +292,7 @@
  		except:
  			# If an error ocurred, cancel mail check
  			print "getUnreadMsgCount() failed, will try again soon"
@@ -190,7 +190,7 @@ Last-Update: <YYYY-MM-DD>
  			return (-1,)
  
  		sender=''
-@@ -297,14 +324,13 @@ class GmailNotify:
+@@ -297,14 +324,13 @@
  		n.close()
  		return
  

@@ -29,9 +29,9 @@ Forwarded: <no|not-needed|url proving that it has been forwarded>
 Reviewed-By: <name and email of someone who approved the patch>
 Last-Update: <YYYY-MM-DD>
 
---- gmail-notify-1.6.1.1.orig/GmailPopupMenu.py
-+++ gmail-notify-1.6.1.1/GmailPopupMenu.py
-@@ -10,14 +10,18 @@ class GmailPopupMenu:
+--- a/GmailPopupMenu.py
++++ b/GmailPopupMenu.py
+@@ -10,14 +10,18 @@
  		self.item_check = gtk.MenuItem( gmailnotify.lang.get_string(9), gtk.TRUE)
  		self.item_usage = gtk.MenuItem( gmailnotify.lang.get_string(10), gtk.TRUE)
  		self.item_inbox = gtk.MenuItem( gmailnotify.lang.get_string(23), gtk.TRUE)
@@ -50,7 +50,7 @@ Last-Update: <YYYY-MM-DD>
  		# Create the menu
  		self.menu = gtk.Menu()
  		# Append menu items to the menu
-@@ -25,6 +29,8 @@ class GmailPopupMenu:
+@@ -25,6 +29,8 @@
  		#self.menu.append( self.item_usage)
  		self.menu.append( self.item_inbox)
  		self.menu.append( gtk.SeparatorMenuItem())
@@ -59,9 +59,9 @@ Last-Update: <YYYY-MM-DD>
  		self.menu.append( self.item_conf)
  		self.menu.append( gtk.SeparatorMenuItem())
  		self.menu.append( self.item_exit)
---- gmail-notify-1.6.1.1.orig/gmailatom.py
-+++ gmail-notify-1.6.1.1/gmailatom.py
-@@ -112,7 +112,8 @@ class MailHandler(ContentHandler):
+--- a/gmailatom.py
++++ b/gmailatom.py
+@@ -112,7 +112,8 @@
  # The mail class
  class GmailAtom:
  
@@ -71,8 +71,8 @@ Last-Update: <YYYY-MM-DD>
  	host = "https://mail.google.com"
  	url = host + "/mail/feed/atom"
  
---- gmail-notify-1.6.1.1.orig/langs.xml
-+++ gmail-notify-1.6.1.1/langs.xml
+--- a/langs.xml
++++ b/langs.xml
 @@ -35,6 +35,7 @@
  		<string id="34">Save username and password</string>
  		<string id="35">s</string>
@@ -89,9 +89,9 @@ Last-Update: <YYYY-MM-DD>
  	</lang>
  	<lang name="Svenska">
  		<string id="1" >Gmail Notifier - konfiguration</string>
---- gmail-notify-1.6.1.1.orig/notifier.py
-+++ gmail-notify-1.6.1.1/notifier.py
-@@ -5,6 +5,7 @@ import pygtk
+--- a/notifier.py
++++ b/notifier.py
+@@ -5,6 +5,7 @@
  pygtk.require('2.0')
  import gtk
  import time
@@ -99,7 +99,7 @@ Last-Update: <YYYY-MM-DD>
  import os
  import sys
  sys.path.insert (0, "/usr/lib/gmail-notify/")
-@@ -20,6 +21,10 @@ BKG_PATH="/usr/share/apps/gmail-notify/b
+@@ -20,6 +21,10 @@
  ICON_PATH="/usr/share/apps/gmail-notify/icon.png"
  ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
  
@@ -110,7 +110,7 @@ Last-Update: <YYYY-MM-DD>
  def removetags(text):
  	raw=text.split("<b>")
  	raw2=raw[1].split("</b>")
-@@ -47,6 +52,7 @@ class GmailNotify:
+@@ -47,6 +52,7 @@
  	configWindow = None
          options = None
  
@@ -118,7 +118,7 @@ Last-Update: <YYYY-MM-DD>
  	def __init__(self):
  		self.init=0
  		print "Gmail Notifier v1.6.1b ("+time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())+")"
-@@ -85,9 +91,15 @@ class GmailNotify:
+@@ -85,9 +91,15 @@
  		self.maintimer=None
  		self.popuptimer=0
  		self.waittimer=0
@@ -135,7 +135,7 @@ Last-Update: <YYYY-MM-DD>
  		self.fixed=gtk.Fixed()
  		self.window.add(self.fixed)
  		self.fixed.show()
-@@ -101,7 +113,9 @@ class GmailNotify:
+@@ -101,7 +113,9 @@
  		self.label=gtk.Label()
  		self.label.set_line_wrap(1)
  		self.label.set_size_request(170,140)
@@ -146,7 +146,7 @@ Last-Update: <YYYY-MM-DD>
  		self.label.set_markup( self.default_label)
  		# Show popup
  		self.label.show()
-@@ -128,8 +142,8 @@ class GmailNotify:
+@@ -128,8 +142,8 @@
  		self.tray.set_title(self.lang.get_string(21))
  		self.tray.connect("button_press_event",self.tray_icon_clicked)
  		# Set the image for the tray icon
@@ -157,7 +157,7 @@ Last-Update: <YYYY-MM-DD>
  		self.tray.set_from_pixbuf(scaled_buf)
  
  		self.init=1
-@@ -142,6 +156,9 @@ class GmailNotify:
+@@ -142,6 +156,9 @@
  
  		self.maintimer=gtk.timeout_add(self.options['checkinterval'],self.mail_check)
  
@@ -167,7 +167,7 @@ Last-Update: <YYYY-MM-DD>
  	def connect(self):
  		# If connecting, cancel connection
  		if self.dont_connect==1:
-@@ -186,6 +203,9 @@ class GmailNotify:
+@@ -186,6 +203,9 @@
  		# Get new messages count
  		attrs = self.has_new_messages()
  
@@ -177,7 +177,7 @@ Last-Update: <YYYY-MM-DD>
  		# If mail check was unsuccessful
  		if attrs[0]==-1:
  			self.mailcheck=0
-@@ -197,28 +217,38 @@ class GmailNotify:
+@@ -197,28 +217,38 @@
  			subject= attrs[3]
  			snippet= attrs[4]
  			if len(snippet)>0:
@@ -223,7 +223,7 @@ Last-Update: <YYYY-MM-DD>
  		self.mailcheck=0
  
  		return gtk.TRUE
-@@ -255,26 +285,43 @@ class GmailNotify:
+@@ -255,26 +285,43 @@
  		else:
  			return (unreadmsgcount,0, sender, subject, finalsnippet)
  
@@ -279,7 +279,7 @@ Last-Update: <YYYY-MM-DD>
  
  	def popup_proc(self):
  		# Set popup status flag
-@@ -289,18 +336,18 @@ class GmailNotify:
+@@ -289,18 +336,18 @@
  				# If popup is down
  				self.senddown=0
  				self.window.hide()
@@ -301,7 +301,7 @@ Last-Update: <YYYY-MM-DD>
  				self.window.move(gtk.gdk.screen_width() - self.width,positiony-2)
  			else:
  				# If popup is up, run wait timer
-@@ -311,6 +358,11 @@ class GmailNotify:
+@@ -311,6 +358,11 @@
  					self.hassettimer=1	
  		return gtk.TRUE
  
@@ -313,7 +313,7 @@ Last-Update: <YYYY-MM-DD>
  	def wait(self):
  		self.senddown=1
  		self.hassettimer=0
-@@ -321,6 +373,7 @@ class GmailNotify:
+@@ -321,6 +373,7 @@
  			self.popup_menu.show_menu(event)
  		else:
  			self.label.set_markup(self.default_label)
@@ -321,7 +321,7 @@ Last-Update: <YYYY-MM-DD>
  			self.show_popup()
  
  	def event_box_clicked(self,signal,event):
-@@ -336,10 +389,6 @@ class GmailNotify:
+@@ -336,10 +389,6 @@
  		    gtk.main_quit(0)
  		dialog.destroy()
  

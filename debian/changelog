@@ -1,3 +1,11 @@
+gmail-notify (1.6.2-1) UNRELEASED; urgency=medium
+
+  * Funcara?
+  * New upstream release.
+  * Close all problems in the universe.
+
+ -- Pedro Boliche <bolichep@gmail.com>  Wed, 13 May 2015 02:17:55 -0300
+
 gmail-notify (1.6.1.1-4) experimental; urgency=medium
 
   * Add sound and libnotify support

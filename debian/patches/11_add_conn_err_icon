@@ -18,9 +18,9 @@ Forwarded: <no|not-needed|url proving that it has been forwarded>
 Reviewed-By: <name and email of someone who approved the patch>
 Last-Update: <YYYY-MM-DD>
 
---- gmail-notify-1.6.1.1.orig/notifier.py
-+++ gmail-notify-1.6.1.1/notifier.py
-@@ -20,6 +20,7 @@ import re
+--- a/notifier.py
++++ b/notifier.py
+@@ -20,6 +20,7 @@
  BKG_PATH="/usr/share/apps/gmail-notify/background.jpg"
  ICON_PATH="/usr/share/apps/gmail-notify/icon.png"
  ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
@@ -28,7 +28,7 @@ Last-Update: <YYYY-MM-DD>
  
  def help_cb(n,action):
  	print "Nothing to help"
-@@ -184,6 +185,9 @@ class GmailNotify:
+@@ -184,6 +185,9 @@
  			self.label.set_markup(self.default_label)
  			self.show_popup()
  			self.dont_connect=0
@@ -38,7 +38,7 @@ Last-Update: <YYYY-MM-DD>
  			return 0
  
  	def mail_check(self, event=None):
-@@ -312,16 +316,6 @@ class GmailNotify:
+@@ -312,16 +316,6 @@
  		self.popup=0
  		print "destroying popup"
  		return

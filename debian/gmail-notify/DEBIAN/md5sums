@@ -11,10 +11,9 @@ a6acd1399e72ad686e0ab9341a969c35  usr/lib/gmail-notify/gmailatom.py
 efc3eb20ca74d17fcbd27f63e3a33eef  usr/share/apps/gmail-notify/icon.xpm
 02ffe638ec57082860fb204d81c7ed96  usr/share/apps/gmail-notify/icon2.jpg
 26d8fcb11a284f397a786a69fd30471f  usr/share/apps/gmail-notify/icon2.png
-3aa8ac63749f4a1fb8fc17692cb9daf1  usr/share/apps/gmail-notify/icon3.png
 14702472e810d6fdbda601d8713ab145  usr/share/apps/gmail-notify/langs.xml
 1448aad933818c24a3e94396121556d9  usr/share/doc/gmail-notify/README.gz
-00ceef771cf63ae7946179c038f7e606  usr/share/doc/gmail-notify/changelog.Debian.gz
+b54a3151f9d2d830f5f37e496264c0aa  usr/share/doc/gmail-notify/changelog.Debian.gz
 e923d9e5b34a0367e862fd2175358da9  usr/share/doc/gmail-notify/copyright
 fb3bd2d4f0aecf71b3df68bd2db0fdc4  usr/share/doc/gmail-notify/notifier.conf.sample
 c3c04b853b90d1ecb9c6315cfda89f17  usr/share/man/man1/gmail-notify.1.gz
