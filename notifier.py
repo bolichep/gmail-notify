@@ -150,7 +150,7 @@ class GmailNotify:
 		self.tray.connect("button_press_event",self.tray_icon_clicked)
 		# Set the image for the tray icon
 		#self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON_PATH )
-		#self.set_tray_state()
+		self.set_tray_state()
 
 		self.init=1
 		while gtk.events_pending():
@@ -336,7 +336,7 @@ class GmailNotify:
 		print "generating popup"
 		self.noti = pynotify.Notification(self.default_title,re.sub('&','&amp;', self.default_label))
 		#~ self.noti.set_icon_from_pixbuf(self.pixbuf)
-		self.noti.set_icon_from_pixbuf(self.set_tray_state('new',48))
+		self.noti.set_icon_from_pixbuf(self.set_tray_state('none',48))
 		self.noti.set_category("presence.online")
 		self.noti.add_action("default","Default Action", self.gotourlnotify )
 		#self.noti.add_action("help","Help", help_cb )
