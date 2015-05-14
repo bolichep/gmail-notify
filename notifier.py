@@ -215,9 +215,9 @@ class GmailNotify:
 			self.tray.set_tooltip_text(self.lang.get_string(15)) # 15 = Connection failed
 			self.default_label = "<span size='large' ><u><i>"+self.lang.get_string(15)+"</i></u></span>\n\n"+self.lang.get_string(16) # 16 = Connection to your Gmail inbox failed, will retry
 			self.label.set_markup(self.default_label)
+			self.set_tray_state(STATE_ERROR)
 			self.show_popup()
 			self.dont_connect=0
-			self.set_tray_state(STATE_ERROR)
 			#~ #self.pixbuf = gtk.gdk.pixbuf_new_from_file( ICON3_PATH )
 			#~ self.pixbuf = icon_theme.load_icon("mail-mark-important", 24, gtk.ICON_LOOKUP_FORCE_SVG)			
 			#~ scaled_buf = self.pixbuf.scale_simple(24,24,gtk.gdk.INTERP_BILINEAR)
@@ -345,7 +345,7 @@ class GmailNotify:
 		print "generating popup"
 		self.noti = pynotify.Notification(self.default_title,re.sub('&','&amp;', self.default_label))
 		#~ self.noti.set_icon_from_pixbuf(self.pixbuf)
-		self.noti.set_icon_from_pixbuf(self.set_tray_state('none',48))
+		self.noti.set_icon_from_pixbuf(self.set_tray_state(STATE_NONE,48))
 		self.noti.set_category("presence.online")
 		self.noti.add_action("default","Default Action", self.gotourlnotify )
 		#self.noti.add_action("help","Help", help_cb )
