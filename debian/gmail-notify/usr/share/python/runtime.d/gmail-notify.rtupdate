@@ -1,6 +1,0 @@
-#! /bin/sh
-set -e
-if [ "$1" = rtupdate ]; then
-	pyclean -p gmail-notify /usr/lib/gmail-notify
-	pycompile -p gmail-notify  /usr/lib/gmail-notify
-fi
