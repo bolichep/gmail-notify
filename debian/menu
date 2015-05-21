@@ -1,6 +1,4 @@
-?package(gmail-notify): needs="X11" \
-        section="Help" \
-        title="Gmail Notify"\
-        command="gmail-notify"\
-        icon="chat-huayra.svg"
+?package(gmail-notify):needs="X11" section="Applications/Network/Communication" title="GMail Notifier" \
+        command="/usr/bin/gmail-notify" \
+	        icon="/usr/share/apps/gmail-notify/gmail-notify-icon.xpm"
 

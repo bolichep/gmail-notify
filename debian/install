@@ -2,4 +2,5 @@
 *.xml usr/share/apps/gmail-notify/
 notifier.conf.sample usr/share/doc/gmail-notify
 *.png usr/share/apps/gmail-notify/
+*.xpm usr/share/apps/gmail-notify/
 gmail-notify-icon.png usr/share/pixmaps/

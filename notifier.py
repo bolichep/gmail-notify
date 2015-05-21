@@ -411,10 +411,10 @@ class GmailNotify:
 			self.popup=0
 			self.show_popup()
 
-	def event_box_clicked(self,signal,event):
-		if event.button==1:
-			self.gotourl()
-
+	#~ def event_box_clicked(self,signal,event):
+		#~ if event.button==1:
+			#~ self.gotourl()
+#~ 
 	def exit(self, event):
 		dialog = gtk.MessageDialog( None, gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO, self.lang.get_string(5))  # 5 = Are you sure do you want to leave Gmail Notifier?
 		dialog.width, dialog.height = dialog.get_size()
