@@ -3,8 +3,8 @@ Section: mail
 Priority: optional
 Maintainer: Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>
 Uploaders: Alan Woodland <awoodland@debian.org>
-Build-Depends: debhelper (>= 9), python (>= 2.6.6-3~)
-Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 9), python (>= 2.6.6-3~) , dh-python 
+Standards-Version: 3.9.6
 Vcs-Browser: http://anonscm.debian.org/viewvc/python-apps/packages/gmail-notify/trunk/
 Vcs-Svn: svn://anonscm.debian.org/python-apps/packages/gmail-notify/trunk/
 Homepage: http://gmail-notify.sourceforge.net/
