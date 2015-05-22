@@ -17,7 +17,7 @@ import GmailPopupMenu
 import gmailatom
 import re
 
-BKG_PATH="/usr/share/apps/gmail-notify/background.jpg"
+#BKG_PATH="/usr/share/apps/gmail-notify/background.jpg"
 ICON_PATH="/usr/share/apps/gmail-notify/icon.svg"
 ICON2_PATH="/usr/share/apps/gmail-notify/icon2.png"
 ICON3_PATH="/usr/share/apps/gmail-notify/icon3.png"
@@ -167,7 +167,7 @@ class GmailNotify:
 		global current
 		global icon_state 
 		if state==STATE_ZERO:
-			icon_state = "mail-mark-read"
+			icon_state = "media-playlist-repeat"
 			current=STATE_NONE
 		if state==STATE_NONE:
 			state=current	
